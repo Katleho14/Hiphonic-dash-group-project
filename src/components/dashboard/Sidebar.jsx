@@ -1,95 +1,80 @@
-import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import {
   LayoutGrid,
-  BarChart3,
+  LineChart,
   ShoppingCart,
   Package,
   Users,
   Settings,
   LogOut,
-  Zap,
 } from "lucide-react";
 
-const navItems = [
-  { icon: LayoutGrid, label: "Overview", to: "/" },
-  { icon: BarChart3, label: "Analytics", to: "/analytics" },
-  { icon: ShoppingCart, label: "Orders", to: "/orders", badge: "10" },
-  { icon: Package, label: "Products", to: "/products" },
-  { icon: Users, label: "Customers", to: "/customers" },
-];
-
-const bottomNavItems = [
-  { icon: Settings, label: "Settings", to: "/settings" },
-  { icon: LogOut, label: "Log Out", to: "/logout" },
-];
-
-const NavItem = ({ icon: Icon, label, to, badge, isActive }) => (
-  <Link
-    to={to}
-    className={cn(
-      "flex items-center gap-3 px-4 py-2 mx-3 rounded-lg text-gray-600 hover:bg-sidebar-hover transition-colors",
-      isActive && "bg-sidebar-active text-primary font-medium"
-    )}
-  >
-    <Icon className="w-5 h-5" />
-    <span>{label}</span>
-    {badge && (
-      <span className="ml-auto bg-pink-500 text-white text-xs px-2 py-0.5 rounded-full">
-        {badge}
-      </span>
-    )}
-  </Link>
-);
-
-// Define PropTypes for NavItem
-NavItem.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  label: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  badge: PropTypes.string,
-  isActive: PropTypes.bool.isRequired,
-};
-
 const Sidebar = () => {
-  const location = useLocation();
+  const menuItems = [
+    { icon: <LayoutGrid size={20} />, label: "Overview", path: "/" },
+    { icon: <LineChart size={20} />, label: "Analytics", path: "/analytics" },
+    {
+      icon: <ShoppingCart size={20} />,
+      label: "Orders",
+      path: "/orders",
+      badge: "10",
+    },
+    { icon: <Package size={20} />, label: "Products", path: "/products" },
+    { icon: <Users size={20} />, label: "Customers", path: "/customers" },
+    { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
+  ];
 
   return (
-    <aside className="w-64 h-screen bg-white border-r flex flex-col fixed">
+    <div className="w-64 min-h-screen bg-white border-r border-gray-200 flex flex-col">
       <div className="p-6">
         <div className="flex items-center gap-2">
-          <div className="bg-primary p-2 rounded-lg">
-            <Zap className="w-5 h-5 text-white" />
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <svg
+              viewBox="0 0 24 24"
+              className="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
           </div>
           <span className="text-xl font-semibold">Hiphonic</span>
         </div>
       </div>
 
-      <nav className="flex-1 py-6">
-        <div className="space-y-1">
-          {navItems.map((item) => (
-            <NavItem
-              key={item.to}
-              {...item}
-              isActive={location.pathname === item.to}
-            />
+      <nav className="flex-1 px-4 pb-4">
+        <ul className="space-y-1">
+          {menuItems.map((item) => (
+            <li key={item.label}>
+              <Link
+                to={item.path}
+                className="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors relative"
+              >
+                {item.icon}
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="absolute right-3 bg-pink-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </nav>
 
-      <div className="border-t py-6">
-        <div className="space-y-1">
-          {bottomNavItems.map((item) => (
-            <NavItem
-              key={item.to}
-              {...item}
-              isActive={location.pathname === item.to}
-            />
-          ))}
-        </div>
+      <div className="px-4 pb-6">
+        <button className="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100 transition-colors w-full">
+          <LogOut size={20} />
+          <span>Log Out</span>
+        </button>
       </div>
-    </aside>
+    </div>
   );
 };
 
