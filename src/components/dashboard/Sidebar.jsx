@@ -43,7 +43,7 @@ const Sidebar = () => {
               />
             </svg>
           </div>
-          <span className="text-xl font-semibold">Hiphonic</span>
+          <span className="text-xl font-bold">Hiphonic</span>
         </div>
       </div>
 
