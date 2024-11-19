@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import PropTypes from 'prop-types';
 import {
   LayoutGrid,
   BarChart3,
@@ -41,6 +42,15 @@ const NavItem = ({ icon: Icon, label, to, badge, isActive }) => (
     )}
   </Link>
 );
+
+// Define PropTypes for NavItem
+NavItem.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  label: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  badge: PropTypes.string,
+  isActive: PropTypes.bool.isRequired,
+};
 
 const Sidebar = () => {
   const location = useLocation();
