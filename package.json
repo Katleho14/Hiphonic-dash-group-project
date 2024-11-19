@@ -21,6 +21,7 @@
     "framer-motion": "^11.11.15",
     "lucide-react": "^0.460.0",
     "next-themes": "^0.4.3",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",

@@ -11,4 +11,5 @@ export const navItems = [
     icon: <HomeIcon className="h-4 w-4" />,
     page: <Index />,
   },
+
 ];
