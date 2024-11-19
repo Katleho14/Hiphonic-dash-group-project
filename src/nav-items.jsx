@@ -12,48 +12,4 @@ export const navItems = [
     page: <Index />,
   },
 
-  {
-    title: "Overview",
-    to: "/",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Analytics",
-    to: "/analytics",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Orders",
-    to: "/orders",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Products",
-    to: "/products",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Customers",
-    to: "/customers",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Settings",
-    to: "/settings",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-  {
-    title: "Logout",
-    to: "/logout",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
-  },
-
-
 ];
